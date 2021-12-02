@@ -1,7 +1,4 @@
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
 /**
  * 93. 复原 IP 地址
@@ -11,61 +8,67 @@ import java.util.List;
  */
 public class Solution93 {
 
-    ArrayList<String> list = new ArrayList<>();
-    public static void main(String[] args) {
+    ArrayList<String> ans = new ArrayList<>();
 
+    ArrayList<String > list =  new ArrayList<String>();
+
+    public static void main(String[] args) {
         Solution93 solution93 = new Solution93();
         List<String> strings = solution93.restoreIpAddresses("25525511135");
         for (String string : strings) {
             System.out.println(string);
         }
-
     }
 
-    ArrayList<String> ans = new ArrayList<>();
+
     public List<String> restoreIpAddresses(String s) {
-        StringBuilder sb = new StringBuilder();
-        dfs(s,s.length(),0,sb);
+        dfs(s, 0, s.length());
         return ans;
     }
 
-    private void dfs(String s,int len,int index,StringBuilder sb){
-
-        if(index==len){
-            if(list.size()==4){
-                ans.add(String.join(".",list));
-            }
+    private void dfs(String s, int index, int len) {
+        if (index == len&&ans.size()==4) {
+            ans.add(String.join(".",list));
+            return;
+        }
+        if(index < len&&list.size()==4){
             return;
         }
 
 
-        for (int i = index; i <=index+ 3; i++) {
-            if (i>=len){
+        for (int i = 0; i < 3; i++) {
+            if(index+i>=len){
                 break;
             }
-            if(valid(s.substring(index,i+1))){
-                list.add(s.substring(index,i+1));
-                dfs(s,len,i+1,sb);
+            String substring = s.substring(index, index + i + 1);
+            if (valid(substring)) {
+                list.add(substring);
+                dfs(s, i +1+index, len);
                 list.remove(list.size()-1);
-
             }
 
         }
+
     }
 
-    private  boolean valid(String s){
-        if(Integer.parseInt(s)>255){
+    private boolean valid(String str){
+        if(Integer.parseInt(str)>255){
             return false;
         }
-        if(Integer.parseInt(s)!=0&&s.charAt(0)=='0'){
-            return false;
+        if(Integer.parseInt(str)!=0&&str.charAt(0)=='0'){
+            return  false;
         }
-        if(Integer.parseInt(s)==0&&s.length()>1){
+        if(Integer.parseInt(str)==0&&str.length()>1){
             return false;
         }
         return true;
+
     }
 
-
-
 }
+
+
+
+
+
+
