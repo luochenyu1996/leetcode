@@ -17,6 +17,8 @@ public class LZ01 {
     }
 
     public static int pivotIndex(int[] nums) {
+
+      
         //前缀和
         int len = nums.length;
         int sum_left = 0;

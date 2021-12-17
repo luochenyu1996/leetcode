@@ -1,5 +1,6 @@
 package enterprise.huawei;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -10,6 +11,9 @@ import java.util.Scanner;
  */
 public class Solution01 {
     public static void main(String[] args) {
+
+
+
         Scanner scanner = new Scanner(System.in);
         String s = scanner.next();
         String[] ss = s.split(",");
