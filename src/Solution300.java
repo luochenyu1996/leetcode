@@ -1,4 +1,5 @@
 import java.util.ArrayDeque;
+import java.util.Arrays;
 
 /**
  * 300. 最长递增子序列
@@ -9,26 +10,26 @@ import java.util.ArrayDeque;
 public class Solution300 {
     public static void main(String[] args) {
         int[] nums = {10, 9, 2, 5, 3, 7, 101, 18};
-        int ans = lengthOfLIS(nums);
-        System.out.println(ans);
+        Solution300 solution300 = new Solution300();
+        int i = solution300.lengthOfLIS(nums);
+        System.out.println(i);
 
     }
 
-    public static int lengthOfLIS(int[] nums) {
-        int len = nums.length;
-        int[] dp = new int[len];
-        dp[0] = 1;
-        int ans = 1;
-        for (int i = 1; i < len; i++) {
-            int maxCount = 1;
-            for (int j = 0; j < i; j++) {
-                if (nums[i] > nums[j]) {
-                    maxCount = Math.max(maxCount, dp[j] + 1);
+    public int lengthOfLIS(int[] nums) {
+        int len= nums.length;
+        int[] dp= new int[len];
+        Arrays.fill(dp,1);
+        int ans=dp[0];
+        for(int i=1;i<len;i++){
+            for(int j=0;j<i;j++){
+                if(nums[i]>nums[j]) {
+                    dp[i]=  Math.max(dp[i],dp[j]+1);
                 }
             }
-            dp[i] = maxCount;
-            ans = Math.max(ans, dp[i]);
+            ans=Math.max(dp[i],ans);
         }
-        return ans;
+        return  ans;
     }
+
 }

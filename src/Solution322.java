@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 /**
  * 322. 零钱兑换
  *
@@ -8,27 +10,38 @@ public class Solution322 {
 
     public static void main(String[] args) {
 
-        int[] coins={2};
-        int amount= 3;
-        int i = coinChange(coins, amount);
+        int[] coins = {2};
+        int amount = 3;
+        Solution322 solution332 = new Solution322();
+        int i = solution332.coinChange(coins, amount);
         System.out.println(i);
-
     }
 
-    public static int coinChange(int[] coins, int amount) {
-        int[] dp =new int[amount+1];
-        for(int i=1;i<=amount;++i){
+
+    /**
+     * 动态规划
+     *
+     */
+    public  int coinChange(int[] coins, int amount) {
+        //0-amount 目标数 需要的硬币数量 dp[i]=
+        int[] dp = new int[amount + 1];
+
+        int length = coins.length;
+
+        for (int i = 1; i <= amount; i++) {
             int minCount=Integer.MAX_VALUE;
-            for(int coin :coins){
-                if(i-coin>=0&&dp[i-coin]<Integer.MAX_VALUE){
+            for (int j = 0; j < length; j++) {
+                if(i-coins[j]>=0){
+                    if(dp[i-coins[j]]==-1){
+                        continue;
+                    }else {
+                        minCount=Math.min(dp[i-coins[j]]+1,minCount);
+                    }
 
-                    int ans=dp[i-coin]+1;
-
-                    minCount=Math.min(ans,minCount);
                 }
             }
-            dp[i]=minCount;
+            dp[i]= minCount==Integer.MAX_VALUE?-1:minCount;
         }
-        return dp[amount]==Integer.MAX_VALUE?-1:dp[amount];
+        return dp[amount];
     }
 }

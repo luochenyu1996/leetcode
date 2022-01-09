@@ -12,7 +12,7 @@ public class Solution279 {
 
 
     public static void main(String[] args) {
-        int i = numSquares(2);
+        int i = numSquares(12);
         System.out.println(i);
     }
 
@@ -24,7 +24,7 @@ public class Solution279 {
             for(int j=1;j*j<=i;j++){
                 min=Math.min(min,dp[i-j*j]);
             }
-            dp[n]= min+1;
+            dp[i]= min+1;
         }
         return  dp[n];
     }

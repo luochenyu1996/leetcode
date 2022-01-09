@@ -1,8 +1,23 @@
-package PACKAGE_NAME;
 /**
-* 96. 不同的二叉搜索树
-*@author chen yu
-*@create 2022-01-05 13:43
-*/
+ * 96. 不同的二叉搜索树
+ *
+ * 使用递推得出的动态规划
+ *
+ * @author chen yu
+ * @create 2022-01-05 13:43
+ */
 public class Solution96 {
+
+    public int numTrees(int n) {
+        int[] dp = new int[n+1];
+        dp[0] = 1;
+        dp[1] = 1;
+
+        for(int i = 2; i < n + 1; i++)
+            for(int j = 1; j < i + 1; j++)
+                dp[i] =dp[i]+ dp[j-1] * dp[i-j];
+
+        return dp[n];
+    }
+
 }
