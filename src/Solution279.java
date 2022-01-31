@@ -8,24 +8,23 @@ import java.util.List;
  * @create 2021-11-11 10:33
  */
 public class Solution279 {
-
-
-
     public static void main(String[] args) {
-        int i = numSquares(12);
+        Solution279 solution279 = new Solution279();
+        int i =solution279.numSquares(12);
         System.out.println(i);
     }
 
-    public static int numSquares(int n) {
+    public  int numSquares(int n) {
+        //状态定义  dp[i] : 和为i的完全平方数的最少个数
+        //状态转移： dp[i]=dp[i-j*j]+1
         int[] dp = new int[n + 1];
-
         for (int i = 1; i <= n; i++) {
-            int min=Integer.MAX_VALUE;
-            for(int j=1;j*j<=i;j++){
-                min=Math.min(min,dp[i-j*j]);
+            //最坏的情况
+            dp[i]=i;
+            for (int j = 1; j*j < i; j++) {
+                    dp[i]=Math.min(dp[i],dp[i-j*j]+1);
             }
-            dp[i]= min+1;
         }
-        return  dp[n];
+        return dp[n];
     }
 }

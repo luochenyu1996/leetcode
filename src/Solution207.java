@@ -1,4 +1,4 @@
-package PACKAGE_NAME;
+
 /**
 * 207. 课程表
 *@author chen yu

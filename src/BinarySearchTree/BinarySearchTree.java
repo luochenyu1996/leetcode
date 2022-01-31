@@ -1,4 +1,4 @@
-package bst;
+package BinarySearchTree;
 
 /**
  * 二叉搜索树：左子树小于跟节点，右子树大于根节点

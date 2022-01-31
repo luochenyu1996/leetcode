@@ -5,24 +5,44 @@
  * @create 2021-11-16 20:16
  */
 public class Solution55 {
-    //这种DP 是很暴力的  应该用更高效率的贪心去做
+
+    /**
+     * 解法1：动态规划
+     *
+     */
     public boolean canJump(int[] nums) {
-        int len=  nums.length;
-        boolean[]  dp= new boolean[len];
-        if(len==0||len==1){
-            return true;
-        }
-        dp[0]=nums[0]==0?false:true;
+        //状态定义 dp[i]  表示 ：当前的位置是否能够到达
+        int  len= nums.length;
+        boolean[] dp=  new boolean[len];
+        dp[0]=true;
         for(int i=0;i<len;i++){
-            for(int j=1;j<=nums[i];++j){
-                if(j+i>=len){
-                    break;
+            for(int j=0;j<i;j++){
+                if(dp[j]){
+                    if(nums[j]+j>=i){
+                        dp[i]=true;
+                        break;
+                    }
                 }
-
-                dp[j+i]=true&&dp[i];
-
             }
         }
-        return  dp[len-1];
+        return dp[len-1];
     }
+
+    /**
+     * 解法2：贪心
+     * 动态维护能够到的最远的位置
+     *
+     */
+    public boolean  canJump02(int[] nums){
+        int length = nums.length;
+        int maxDis=nums[0];
+        for (int i = 1; i < length; i++) {
+              if(maxDis<i){
+                  return false;
+              }
+              maxDis=Math.max(maxDis,i+nums[i]);
+        }
+        return maxDis >= length - 1;
+    }
+
 }

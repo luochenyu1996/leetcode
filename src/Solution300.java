@@ -1,8 +1,9 @@
-import java.util.ArrayDeque;
-import java.util.Arrays;
+
 
 /**
  * 300. 最长递增子序列
+ *
+ * 贪心  + dp  +  二分
  *
  * @author chen yu
  * @create 2021-11-05 12:25
@@ -17,19 +18,33 @@ public class Solution300 {
     }
 
     public int lengthOfLIS(int[] nums) {
-        int len= nums.length;
-        int[] dp= new int[len];
-        Arrays.fill(dp,1);
-        int ans=dp[0];
-        for(int i=1;i<len;i++){
-            for(int j=0;j<i;j++){
-                if(nums[i]>nums[j]) {
-                    dp[i]=  Math.max(dp[i],dp[j]+1);
+        int len = nums.length;
+        int[] dp = new int[len];
+        dp[0] = nums[0];
+        int end = 0;
+        for (int i = 0; i < len; i++) {
+            //大于的时候
+            if (nums[i] > dp[end]) {
+                end++;
+                dp[end] = nums[i];
+            } else {
+                //小于的时候
+                int leftIndex = 0;
+                int rightIndex = end;
+                while (leftIndex < rightIndex) {
+                    int mid = (rightIndex + leftIndex) / 2;
+                    if (dp[mid] < nums[i]) {
+                        leftIndex = mid + 1;
+                    } else {
+                        rightIndex = mid;
+                    }
                 }
+                dp[leftIndex] = nums[i];
             }
-            ans=Math.max(dp[i],ans);
+
         }
-        return  ans;
+        return end+1;
     }
+
 
 }

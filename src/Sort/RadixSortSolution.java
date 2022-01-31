@@ -1,4 +1,4 @@
-package sort;
+package Sort;
 
 /**
  * 基数排序
