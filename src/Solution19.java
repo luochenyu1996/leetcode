@@ -6,8 +6,12 @@ import java.util.Scanner;
 /**
  * 19.删除链表的倒数第 N 个结点
  *
+ *
+ *
  *  todo 参考leetcode提交记录 有一种更好的方法 进行一趟扫描即可
  */
+
+
 
 public class Solution19 {
 
