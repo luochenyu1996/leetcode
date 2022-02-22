@@ -11,10 +11,8 @@ import java.util.List;
  */
 public class Solution46 {
 
-
-
     public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> ans= new ArrayList<List<Integer>>();
+        List<List<Integer>> ans= new ArrayList<>();
         ArrayList<Integer> path=  new ArrayList<Integer>();
         int len=nums.length;
         boolean[] used= new boolean[len];

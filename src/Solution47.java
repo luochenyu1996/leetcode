@@ -17,9 +17,9 @@ public class Solution47 {
     }
 
 
+
     public List<List<Integer>> permuteUnique(int[] nums) {
         Arrays.sort(nums);
-
         ArrayList<Integer> path = new ArrayList<>();
         ArrayList<List<Integer>> ans = new ArrayList<>();
         int len = nums.length;

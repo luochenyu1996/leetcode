@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.stream.Collectors;
 
 /**
- * 5. 最长回文子串
+ * 5最长回文子串
 
  * @author chen yu
  * @create 2021-11-17 11:58

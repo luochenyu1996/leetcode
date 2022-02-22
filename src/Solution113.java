@@ -28,6 +28,7 @@ public class Solution113 {
             if (root.val == targetSum) {
                 path.add(root.val);
                 ans.add(new ArrayList<>(path));
+                //这里是怎么理解的？如果这里没删  后面也删不到
                 path.remove(path.size() - 1);
             }
             return;

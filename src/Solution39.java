@@ -24,6 +24,8 @@ public class Solution39 {
                 return;
         }
         for (int i = 0; i < len; i++) {
+            //这里进行剪枝 没有进行排序 还有一种排序的做法
+            //这里的意思是不能回退选
             if(path.size()>0&&candidates[i]<path.get(path.size()-1)){
                 continue;
             }

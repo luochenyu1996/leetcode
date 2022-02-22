@@ -1,8 +1,44 @@
-package PACKAGE_NAME;
 /**
-* 10. 正则表达式匹配
-*@author chen yu
-*@create 2022-02-11 13:38
-*/
+ * 10. 正则表达式匹配
+ *
+ * @author chen yu
+ * @create 2022-02-11 13:38
+ */
 public class Solution10 {
+    public boolean isMatch(String s, String p) {
+        int lenS = s.length();
+        int lebP = p.length();
+
+        boolean[][] dp = new boolean[lenS + 1][lebP + 1];
+        dp[0][0] = true;
+        for (int i = 0; i <= lenS; ++i) {
+            for (int j = 1; j <= lebP; ++j) {
+                if (p.charAt(j - 1) == '*') {
+                    dp[i][j] = dp[i][j - 2];
+                    if (matches(s, p, i, j - 1)) {
+                        dp[i][j] = dp[i][j] || dp[i - 1][j];
+                    }
+                } else {
+                    if (matches(s, p, i, j)) {
+                        dp[i][j] = dp[i - 1][j - 1];
+                    }
+                }
+            }
+        }
+        return dp[lenS][lebP];
+    }
+
+    public boolean matches(String s, String p, int i, int j) {
+        if (i == 0) {
+            return false;
+        }
+        if (p.charAt(j - 1) == '.') {
+            return true;
+        }
+        return s.charAt(i - 1) == p.charAt(j - 1);
+    }
+
+
+
+
 }
