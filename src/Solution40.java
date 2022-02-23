@@ -29,6 +29,10 @@ public class Solution40 {
             return;
         }
         for (int i = 0; i < len; i++) {
+            //减枝条件
+            //1、不往小的走
+            //2、用过的不用
+            //3、等于时候不再继续用
             if(flag[i]||(path.size()>0&&candidates[i]<path.get(path.size()-1))||(i>0&&candidates[i]==candidates[i-1]&&!flag[i-1])){
                 continue;
             }
