@@ -1,7 +1,3 @@
-import org.omg.CORBA.MARSHAL;
-
-import java.util.HashMap;
-import java.util.HashSet;
 
 /**
  * 1763. 最长的美好子字符串
@@ -10,8 +6,6 @@ import java.util.HashSet;
  * @create 2022-02-01 00:09
  */
 public class Solution1763 {
-
-
     public static void main(String[] args) {
         Solution1763 solution1763 = new Solution1763();
         String res = solution1763.longestNiceSubstring("aAa");
