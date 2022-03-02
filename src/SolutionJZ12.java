@@ -34,7 +34,7 @@ public class SolutionJZ12 {
 
         used[i][j]=true;
 
-        //关键是下面这几行代码
+        //关键是下面这几行代码 这种写法较为直观
         boolean res =
                 dfs(board, word, i + 1, j, k + 1) || dfs(board, word, i - 1, j, k + 1) ||
                 dfs(board, word, i, j + 1, k + 1) || dfs(board, word, i , j - 1, k + 1);

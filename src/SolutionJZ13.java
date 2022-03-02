@@ -1,6 +1,8 @@
 /**
  * 剑指 Offer 13. 机器人的运动范围
  *
+ * leetcode 中的提交记录还写了另外一种模板的DFS
+ *
  * @author chen yu
  * @create 2021-12-25 11:23
  */
@@ -10,14 +12,14 @@ public class SolutionJZ13 {
     int count=0;
     public int movingCount(int m, int n, int k) {
         int rows=m;
-        int cloumns=n;
-        boolean[][] flags= new boolean[rows][cloumns];
-        dfs(0,0,k,rows,cloumns,flags);
+        int columns=n;
+        boolean[][] flags= new boolean[rows][columns];
+        dfs(0,0,k,rows,columns,flags);
         return count;
     }
 
 
-    private void dfs( int x,int y,int k,int rows,int cloumns,boolean[][] flags){
+    private void dfs( int x,int y,int k,int rows,int columns,boolean[][] flags){
         if(indexSum(x,y,k)){
             count++;
         }else{
@@ -27,8 +29,8 @@ public class SolutionJZ13 {
         for(int i=0;i<4;i++){
             int newX=x+dx[i];
             int newY=y+dy[i];
-            if(newY>=0&&newX>=0&&newX<rows&&newY<cloumns&&!flags[newX][newY]){
-                dfs(newX,newY,k,rows,cloumns,flags);
+            if(newY>=0&&newX>=0&&newX<rows&&newY<columns&&!flags[newX][newY]){
+                dfs(newX,newY,k,rows,columns,flags);
             }
         }
     }
